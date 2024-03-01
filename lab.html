@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio Virtual</title>
+    <!---custom css link-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <!---boxicoins css link-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+    
+    <!---google font link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">  
+</head>
+<body>
+  <!---header design-->
+  <header>
+    <a href="#" class="logo"><img class="imagen" src="fceialogo.png"></a>
+    <ul class="navbar">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="lab.html">Laboratorio</a></li>
+        <li><a href="lab.html#social">Contacto</a></li>
+    </ul>
+    <div class="h-right">
+        <a href="#">Seguinos</a>
+        <a href="https://www.instagram.com/fceia.unr?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="ri-instagram-line"></i></a>
+        <a href="https://www.youtube.com/channel/UCdHktEx32A1DXbM-0Ot4KCQ"><i class="ri-youtube-line"></i></a>
+        <a href="https://www.linkedin.com/company/facultad-de-ciencias-exactas-ingenier-a-y-agrimensura/"><i class="ri-linkedin-box-line"></i></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+  </header>
+  <div class="home2">
+    <div class="content-simulation">
+      <h1>Laboratorio</h1><br>
+      <h3>Esta simulación nos permite introducirnos en el comportamiento de dos péndulos conectados mediante un resorte con baja constante elástica k (acoplamiento débil). Un rasgo distintivo de este tipo de sistema es la transferencia continua de energía de una parte a otra.</h3>
+      <br>
+      <h3>Para comenzar, introduce los datos iniciales, como las amplitudes, la constante k y el valor de la masa m, que es idéntica para ambos péndulos.
+        Ten en cuenta ciertas restricciones:
+        <ul>
+          <li>Las amplitudes deben estar en el rango de -0.04m a 0.04m para cumplir la hipótesis de ángulos pequeños. Un valor negativo indica una amplitud hacia la izquierda, mientras que un valor positivo representa una amplitud hacia la derecha.</li>
+          <li>La constante elástica debe ser un número positivo, sin exceder 100 para mantener el acoplamiento débil.</li>
+          <li>La masa m también debe ser un número positivo.</li>
+        </ul>
+      </h3>
+      <br>
+      <h3>Después de ingresar estos parámetros, haz clic en el botón "Modificar Datos" y luego en el botón "Inicio/Pausa".
+        Si deseas reiniciar, simplemente haz clic en el botón "Reiniciar".
+        Con esta herramienta, podrás visualizar de manera interactiva cómo la energía de oscilación se transfiere entre ambos péndulos a lo largo del tiempo.
+      </h3>
+    </div>
+    <div class="container">
+      <div class="col1">
+        <h2>Controles</h2>
+        <br>
+        <button type="button" onclick="InicioPausa()"  id="btn-1" class="btn-1">Inicio/Pausa</button> <br>  
+        <button type="button" onclick="Restart()" class="btn-1">Reiniciar</button>  
+      </div>
+
+      <div class="data">
+        <h2>Datos del problema</h2>
+        <div class="form-data">
+          <div class="item1">
+            <label for="A1">A1[m]</label>
+            <input class="input" type="text" id="A1" placeholder="Ingese Amplitud masa izquierda" required>
+          </div>
+          <div class="item2">
+            <label for="A2">A2 [m]</label>
+            <input class="input" type="text" id="A2" placeholder="Ingese Amplitud masa derecha" required>
+          </div>
+          <div class="item3">
+            <label for="k">k [N/m2]</label>
+            <input class="input" type="text" id="k" placeholder="Ingese la constante k [N/m2]" required>
+          </div>
+          <div class="item4">
+            <label for="m">m [kg]</label>
+            <input class="input" type="text" id="m" placeholder="Ingese la masa [kg]" required>
+          </div>
+          <div class="item5">
+            <button type="submit" onclick="GetValue()" class="btn-1" id="submit" >Modificar Datos</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="simulation">
+      <canvas id="myCanvas"></canvas>
+    </div>
+  </div>
+  <section class="footer">
+    <div class="footer-box">
+        <h3>Contacto</h3>
+        <a href="https://www.linkedin.com/in/agust%C3%ADn-rafaelli-33461b223/">Agustín Rafaelli</a>
+        <a href="https://www.linkedin.com/in/carlos-mauricio-silva-2b905867/">Carlos Silva</a>
+    </div>
+    <div class="footer-box" id="social">
+        <h3>Social Media</h3>
+        <div class="social">
+            <a href="https://www.instagram.com/fceia.unr?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="ri-instagram-line"></i></a>
+            <a href="https://www.youtube.com/channel/UCdHktEx32A1DXbM-0Ot4KCQ"><i class="ri-youtube-line"></i></a>
+            <a href="https://www.linkedin.com/company/facultad-de-ciencias-exactas-ingenier-a-y-agrimensura/"><i class="ri-linkedin-box-line"></i></a>
+        </div>
+    </div>
+    
+</section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Codigo de simulacion del pendulo -->
+<script src="main.js"> </script>
+<!---custom js file link-->
+<script src="script.js"></script>
+  
+</body>
+</html>
